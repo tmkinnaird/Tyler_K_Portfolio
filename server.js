@@ -9,6 +9,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const Portfolio = require('./models/info.js')
 const show = console.log;
 show('not today homie')
 
@@ -60,13 +61,21 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
 
+app.get('/project/contact', (req, res) => {
+    res.render('Contact');
+})
+
+app.get('/project/aboutme', (req, res) => {
+    res.render('Aboutme');
+})
+
 /* Index starts here*/
-app.get('/portfolio', (req, res) => {
-    Store.find({}, (err, allPortfolio) => {
+app.get('/project', (req, res) => {
+    Portfolio.find({}, (err, allPortfolio) => {
         if(!err){
-            // console.log(allStore);
+            // console.log(allPortfolio);
             res.render('Index', {
-                store: allPortfolio,
+                portfolio: allPortfolio,
             })
         } else {
             res.send(err)
@@ -77,16 +86,16 @@ app.get('/portfolio', (req, res) => {
 /* Index ends here*/
 
 /* NEW ROUTE */
-app.get('/store/new', (req, res) => {
+app.get('/project/new', (req, res) => {
     res.render('New');
 })
 /* */
 
 // Delete '/<nameOfResource>/:id' DELETE ex. app.delete('/portfolio/:id')
-app.delete('/portfolio/:id', (req, res) => {
+app.delete('/project/:id', (req, res) => {
     Portfolio.findByIdAndRemove(req.params.id, (err, foundPortfolio) => {
         if(!err) {
-           res.redirect('/portfolio')
+           res.redirect('/project')
         } else {
             res.send(err);
         }
@@ -94,10 +103,10 @@ app.delete('/portfolio/:id', (req, res) => {
 })
 
 // Update '/<nameOfResource>/:id' PUT ex. app.put('/portfolio/:id')
-app.put('/portfolio/:id', (req, res) => {
+app.put('/project/:id', (req, res) => {
     Portfolio.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPortfolio) => {
         if(!err) {
-            res.redirect('/portfolio')
+            res.redirect('/project')
         } else {
             res.send(err);
         }
@@ -106,15 +115,10 @@ app.put('/portfolio/:id', (req, res) => {
 
 
 //Create
-app.post('/portfolio', (req, res) => {
-    if(req.body.readyToTake === 'on'){
-        req.body.readyToTake = true
-    } else {
-    req.body.readyToTake = false
-    }
-    Store.create(req.body, (err, createdPortfolio) => {
+app.post('/project', (req, res) => {
+    Portfolio.create(req.body, (err, createdPortfolio) => {
         if(!err){
-            res.redirect('/portfolio')
+            res.redirect('/project')
         } else{
             res.send(err);
         }
@@ -122,7 +126,7 @@ app.post('/portfolio', (req, res) => {
 })
 
 // Edit '/<nameOfResource>/:id/edit' GET ex. app.get('/portfolio/:id/edit')
-app.get('/portfolio/:id/edit', (req, res) => {
+app.get('/project/:id/edit', (req, res) => {
     Portfolio.findById(req.params.id, (err, foundPortfolio) => {
         if(!err) {
             res.render('Edit', {
@@ -135,11 +139,11 @@ app.get('/portfolio/:id/edit', (req, res) => {
 })
 
 //Show
-app.get('/portfolio/:id', (req, res) => {
-    Store.findById(req.params.id, (err, foundPortfolio) => {
+app.get('/project/:id', (req, res) => {
+    Portfolio.findById(req.params.id, (err, foundPortfolio) => {
         if(!err) {
             res.render('Show', {
-                store: foundPortfolio
+                portfolio: foundPortfolio
             })
         } else {
             res.send(err);

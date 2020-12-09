@@ -11,11 +11,12 @@ const app = express ();
 const db = mongoose.connection;
 const show = console.log;
 show('not today homie')
+
 //___________________
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT || 3000; // <= Heroku
+const PORT = process.env.PORT || 3001; // <= Heroku
 
 //___________________
 //Database
@@ -47,6 +48,108 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+
+// Setup view engine
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
+
+app.use(express.static('public'));
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connection.once('open', ()=> {
+    console.log('connected to mongo');
+});
+
+/* Index starts here*/
+app.get('/portfolio', (req, res) => {
+    Store.find({}, (err, allPortfolio) => {
+        if(!err){
+            // console.log(allStore);
+            res.render('Index', {
+                store: allPortfolio,
+            })
+        } else {
+            res.send(err)
+        }
+    })
+})
+ 
+/* Index ends here*/
+
+/* NEW ROUTE */
+app.get('/store/new', (req, res) => {
+    res.render('New');
+})
+/* */
+
+// Delete '/<nameOfResource>/:id' DELETE ex. app.delete('/portfolio/:id')
+app.delete('/portfolio/:id', (req, res) => {
+    Portfolio.findByIdAndRemove(req.params.id, (err, foundPortfolio) => {
+        if(!err) {
+           res.redirect('/portfolio')
+        } else {
+            res.send(err);
+        }
+    })
+})
+
+// Update '/<nameOfResource>/:id' PUT ex. app.put('/portfolio/:id')
+app.put('/portfolio/:id', (req, res) => {
+    Portfolio.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPortfolio) => {
+        if(!err) {
+            res.redirect('/portfolio')
+        } else {
+            res.send(err);
+        }
+    })
+})
+
+
+//Create
+app.post('/portfolio', (req, res) => {
+    if(req.body.readyToTake === 'on'){
+        req.body.readyToTake = true
+    } else {
+    req.body.readyToTake = false
+    }
+    Store.create(req.body, (err, createdPortfolio) => {
+        if(!err){
+            res.redirect('/portfolio')
+        } else{
+            res.send(err);
+        }
+    })
+})
+
+// Edit '/<nameOfResource>/:id/edit' GET ex. app.get('/portfolio/:id/edit')
+app.get('/portfolio/:id/edit', (req, res) => {
+    Portfolio.findById(req.params.id, (err, foundPortfolio) => {
+        if(!err) {
+            res.render('Edit', {
+                portfolio: foundPortfolio
+            })
+        } else {
+            res.send(err);
+        }
+    })
+})
+
+//Show
+app.get('/portfolio/:id', (req, res) => {
+    Store.findById(req.params.id, (err, foundPortfolio) => {
+        if(!err) {
+            res.render('Show', {
+                store: foundPortfolio
+            })
+        } else {
+            res.send(err);
+        }
+    })
+})
+
+
+
+
 
 
 //___________________

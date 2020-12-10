@@ -21,6 +21,7 @@ repeat: no-repeat;
 * {
     color: slateblue;
     text-align: center;
+    cursor: pointer;
 }
 
 .header-text {
@@ -28,11 +29,12 @@ repeat: no-repeat;
     top: 10vh;
     font-size: 20px;
     background-color: black;
+    border-radius: 25px;
 }
 
 .project-body {
     position: relative;
-    margin: 150px auto;
+    margin: 155px auto;
     left: 0;
     right: 0;
 }
@@ -45,8 +47,10 @@ ul {
 .me-text {
     background-color: black;
     font-size: 20px;
+    border-radius: 15px;
 }
 
 .header-text-2 {
     background-color: black;
+    border-radius: 25px;
 }

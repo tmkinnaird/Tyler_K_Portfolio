@@ -25,7 +25,7 @@ class Index extends React.Component {
                                     <a href={`/project/${portfolio._id}/edit`}><button>Edit</button></a> <br/>
                                     <a href={`/project/${portfolio._id}`}><button>Project Page</button></a>
                                     <p><img src={portfolio.image} alt=""/></p>
-                                    <p><iframe src={portfolio.link} width="1000px" height="750px"></iframe></p>
+                                    <p><iframe src={portfolio.link} width="950px" height="700px"></iframe></p>
                                     <p></p>
                                 </li>
                             )

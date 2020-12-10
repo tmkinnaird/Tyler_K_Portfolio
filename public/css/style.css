@@ -1,0 +1,52 @@
+#link_port {
+    width: 1000px;
+    height: 750px;
+    
+}
+ #about {
+     width: 400px;
+     height: auto;
+     margin: 0 auto;
+     display: block;
+ }
+
+    
+
+body {
+background-image:url('https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg');
+background-size: cover;
+repeat: no-repeat;
+}
+
+* {
+    color: slateblue;
+    text-align: center;
+}
+
+.header-text {
+    position: relative;
+    top: 10vh;
+    font-size: 20px;
+    background-color: black;
+}
+
+.project-body {
+    position: relative;
+    margin: 150px auto;
+    left: 0;
+    right: 0;
+}
+
+ul {
+    list-style-type: none;
+
+}
+
+.me-text {
+    background-color: black;
+    font-size: 20px;
+}
+
+.header-text-2 {
+    background-color: black;
+}

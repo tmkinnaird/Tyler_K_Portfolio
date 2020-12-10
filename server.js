@@ -61,11 +61,19 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
 
-app.get('/project/contact', (req, res) => {
+//___________________
+// Routes
+//___________________
+//localhost:3000 
+app.get('/' , (req, res) => {
+    res.send('Hello World!');
+  });
+
+app.get('/contact', (req, res) => {
     res.render('Contact');
 })
 
-app.get('/project/aboutme', (req, res) => {
+app.get('/aboutme', (req, res) => {
     res.render('Aboutme');
 })
 
@@ -102,9 +110,9 @@ app.delete('/project/:id', (req, res) => {
     })
 })
 
-// Update '/<nameOfResource>/:id' PUT ex. app.put('/portfolio/:id')
+// Update '/<nameOfResource>/:id' PUT ex. app.put('/project/:id')
 app.put('/project/:id', (req, res) => {
-    Portfolio.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPortfolio) => {
+    Portfolio.findByIdAndUpdate(req.params.id, req.body, (err, updatedPortfolio) => {
         if(!err) {
             res.redirect('/project')
         } else {
@@ -125,7 +133,7 @@ app.post('/project', (req, res) => {
     })
 })
 
-// Edit '/<nameOfResource>/:id/edit' GET ex. app.get('/portfolio/:id/edit')
+// Edit '/<nameOfResource>/:id/edit' GET ex. app.get('/project/:id/edit')
 app.get('/project/:id/edit', (req, res) => {
     Portfolio.findById(req.params.id, (err, foundPortfolio) => {
         if(!err) {
@@ -156,13 +164,7 @@ app.get('/project/:id', (req, res) => {
 
 
 
-//___________________
-// Routes
-//___________________
-//localhost:3000 
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
+
 
 //___________________
 //Listener

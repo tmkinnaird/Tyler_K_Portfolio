@@ -4,6 +4,7 @@ const Layout = require('./Layout/Layout.jsx');
 class Contact extends React.Component {
     render() {
         return (
+            <Layout>
             <body>
                 <div>
                     <h1>Contact Me</h1>
@@ -11,6 +12,7 @@ class Contact extends React.Component {
                     <h1>720-499-5683</h1>
                 </div>
             </body>
+            </Layout>
         )
     }
 

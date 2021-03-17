@@ -20,9 +20,9 @@ class Index extends React.Component {
                         this.props.portfolio.map((portfolio) => {
                             return (
                                 <li>
-                                    {/* <form action={`/project/${portfolio._id}?_method=DELETE`} method="POST">
-                                    <input type="submit" value="DELETE"/> */}
-                                    {/* </form> */}
+                                    <form action={`/project/${portfolio._id}?_method=DELETE`} method="POST">
+                                    <input type="submit" value="DELETE"/> 
+                                    </form>
                                     {/* <a href={`/project/${portfolio._id}/edit`}><button>Edit</button></a> <br/> */}
                                     <a href={`/project/${portfolio._id}`}><button>Description</button></a> <br/>
                                     <p><img src={portfolio.image} alt=""/></p>

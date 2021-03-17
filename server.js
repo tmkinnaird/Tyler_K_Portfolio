@@ -17,7 +17,7 @@ show('not today homie')
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT || 3001; // <= Heroku
+const PORT = process.env.PORT || 3002; // <= Heroku
 
 //___________________
 //Database
@@ -65,9 +65,9 @@ mongoose.connection.once('open', ()=> {
 // Routes
 //___________________
 //localhost:3000 
-app.get('/' , (req, res) => {
-    res.send('Hello World!');
-  });
+// app.get('/' , (req, res) => {
+//     res.render('Index');
+//   });
 
 app.get('/contact', (req, res) => {
     res.render('Contact');
@@ -78,7 +78,7 @@ app.get('/aboutme', (req, res) => {
 })
 
 /* Index starts here*/
-app.get('/project', (req, res) => {
+app.get('/', (req, res) => {
     Portfolio.find({}, (err, allPortfolio) => {
         if(!err){
             // console.log(allPortfolio);
@@ -123,7 +123,7 @@ app.put('/project/:id', (req, res) => {
 
 
 //Create
-app.post('/project', (req, res) => {
+app.post('/new', (req, res) => {
     Portfolio.create(req.body, (err, createdPortfolio) => {
         if(!err){
             res.redirect('/project')

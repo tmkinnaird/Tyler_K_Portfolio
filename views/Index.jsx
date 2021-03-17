@@ -5,36 +5,37 @@ class Index extends React.Component {
     render () {
         return (
             <Layout>
-            <body>
+            {/* <body> */}
                 <div>
                     <div className= 'header-text'>
-                    <h1>Tyler Kinnaird</h1>
-                    <p>I am an emerging full-stack developer with a passion for tech and
-                        I would love to hear from you.</p>
+                    <h1>Hey y'all, I'm Tyler Kinnaird</h1>
+                    <h2>Junior Software Engineer</h2>
+                    <p>Give me a call or email and we can make this the best, most modern human experience that we can culivate together!</p>
                     </div>
-                    <div className= 'project-body'>
+                <div className= 'project-body'>
                     <ul>
                         
                     {
+                        /* this.props.portfolio ? ( */
                         this.props.portfolio.map((portfolio) => {
                             return (
                                 <li>
-                                   <form action={`/project/${portfolio._id}?_method=DELETE`} method="POST">
-                                    <input type="submit" value="DELETE"/>
-                                    </form>
-                                    <a href={`/project/${portfolio._id}/edit`}><button>Edit</button></a> <br/>
-                                    <a href={`/project/${portfolio._id}`}><button>Project Page</button></a>
+                                    {/* <form action={`/project/${portfolio._id}?_method=DELETE`} method="POST">
+                                    <input type="submit" value="DELETE"/> */}
+                                    {/* </form> */}
+                                    {/* <a href={`/project/${portfolio._id}/edit`}><button>Edit</button></a> <br/> */}
+                                    <a href={`/project/${portfolio._id}`}><button>Description</button></a> <br/>
                                     <p><img src={portfolio.image} alt=""/></p>
-                                    <p><iframe src={portfolio.link} width="950px" height="700px"></iframe></p>
-                                    <p></p>
+                                    <p><iframe src={portfolio.link} width="900px" height="600px"></iframe></p>
                                 </li>
                             )
-                        })
+                        }) 
+                        /* ) :"" */
                     }
                 </ul>
                     </div>
                 </div>
-            </body>
+            {/* </body> */}
             </Layout>
         )
     }

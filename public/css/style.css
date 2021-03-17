@@ -1,56 +1,96 @@
 #link_port {
-    width: 1000px;
-    height: 750px;
-    
+  width: 1000px;
+  height: 750px;
 }
- #about {
-     width: 400px;
-     height: auto;
-     margin: 0 auto;
-     display: block;
- }
+#about {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  color: white;
+}
 
-    
+/* body {
+  background-image: url("https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg");
+  /* background-size: cover; */
+/* height: 100vh;
+  position: fixed; */
+/* overflow-y: scroll;
+  background-repeat: no-repeat;
+} */
 
-body {
-background-image:url('https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg');
-background-size: cover;
-repeat: no-repeat;
+html {
+  background: url("https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg")
+    no-repeat center center fixed;
+}
+
+.social-highlight {
+  color: gold;
+  margin: 0 8px;
+  padding: 9px;
 }
 
 * {
-    color: slateblue;
-    text-align: center;
-    cursor: pointer;
+  text-align: center;
+  cursor: pointer;
+}
+
+h2 {
+  color: white;
 }
 
 .header-text {
-    position: relative;
-    top: 10vh;
-    font-size: 20px;
-    background-color: black;
-    border-radius: 25px;
+  position: relative;
+  top: 10vh;
+  background-color: rgb(46, 33, 33);
+  background-image: linear-gradient(to bottom right, darkgreen, black);
+  border-radius: 15px;
+  padding: 8px;
 }
 
-.project-body {
-    position: relative;
-    margin: 155px auto;
-    left: 0;
-    right: 0;
-}
-
-ul {
-    list-style-type: none;
-
-}
-
-.me-text {
-    background-color: black;
-    font-size: 20px;
-    border-radius: 15px;
+.header-text h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 60px;
+  color: gold;
 }
 
 .header-text-2 {
-    background-color: black;
-    border-radius: 25px;
+  color: white;
+}
+
+nav {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+p {
+  font-size: 30px;
+  color: white;
+}
+
+.project-body {
+  position: relative;
+  margin: 155px auto;
+  left: 0;
+  right: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.me-text {
+  background-color: rgb(48, 44, 44);
+  font-size: 20px;
+  border-radius: 15px;
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 stretch;
+  color: white;
 }

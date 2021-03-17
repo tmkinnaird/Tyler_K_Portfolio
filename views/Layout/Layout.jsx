@@ -7,10 +7,12 @@ class Layout extends React.Component {
                 <head>
                     <title>Tyler K Portfolio</title>
                     <link rel="stylesheet" href="/css/style.css"/>
+                    <script src="https://kit.fontawesome.com/66bacdd963.js" crossorigin="anonymous"></script>
+ 
                 </head>
                 <body>
                     <nav>
-                        <a href="/project"><button>Home</button></a>
+                        <a href="/"><button>Home</button></a>
                         <a href={'/aboutme'}><button>About Me</button></a><br/>
                         <a href={'/contact'}><button>Contact Me</button></a><br/>
                         <a href={'/project/new'}><button>Create a New Project</button></a>

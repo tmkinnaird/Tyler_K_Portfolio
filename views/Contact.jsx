@@ -18,6 +18,7 @@ class Contact extends React.Component {
                     <p>Resume</p>
                     <a href="" target="_blank">
                     <i className="far fa-file fa-5x"></i>
+                    
                     </a>
                     </div>
                 </div>
